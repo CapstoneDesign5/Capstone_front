@@ -1,0 +1,17 @@
+.memberEdit {
+    padding: 10px;
+}
+.memberListEdit {
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: #3bb077;
+    color: white;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.memberListDelete {
+    color: red;
+    cursor: pointer;
+}

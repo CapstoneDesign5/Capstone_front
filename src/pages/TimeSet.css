@@ -1,0 +1,52 @@
+.newTimeSet {
+    padding: 10px;
+}
+
+.newTimeSetForm {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newTimeSetItem {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.newTimeSetItem > label {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(121, 121,121);
+}
+
+.newTimeSetItem > input {
+    height: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.newTimeSetItem > select {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.newTimeSetButton {
+    width: 200px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 7px 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
