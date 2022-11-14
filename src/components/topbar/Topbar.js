@@ -13,7 +13,13 @@ export default function Topbar(){
                     </div>
                 </div>
                 <div className="topRight">
-                <Link to="/Login" className="loginLink">로그인</Link>
+                {
+                     localStorage.getItem('isLogined')=='true'
+                     ?
+                     <Link to="/Login" className="loginLink">로그아웃</Link>
+                     :
+                     <Link to="/Login" className="loginLink">로그인</Link>
+                }
                 <Link to="/Signup" className="signUpLink">회원가입</Link>
                     <div className="topbarIconContainer">
                         <NotificationsNoneIcon className="NotificationsIcon"/>

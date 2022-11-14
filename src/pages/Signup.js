@@ -32,7 +32,6 @@ const Signup = () => {
   }
 
   const handleSubmit = (event) => {
-    console.log('버튼 이벤트 실행');
     event.preventDefault();
     axios.post('/manager/register', {
       id:id,
@@ -93,11 +92,12 @@ const Signup = () => {
             {/* 생년월일 */}
             <div>
               <h5> 이메일 </h5>
-              <input onChange={handleEmail} type='text' maxLength='15' name='signup_email'/> @
+              <input onChange={handleEmail} type='text' maxLength='30' name='signup_email'/> 
+              {/* @
               <select name='signup_email_select'>
                 <option value='gmail.com'> gmail.com </option>
                 <option value='naver.com'> naver.com </option>
-              </select>
+              </select> */}
             </div>
           </div>
         </div>
