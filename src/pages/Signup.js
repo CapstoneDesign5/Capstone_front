@@ -33,7 +33,7 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('/manager/register', {
+    axios.post('http://localhost:5000/manager/register', {
       id:id,
       name:name,
       phone_num:phoneNum,

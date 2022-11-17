@@ -22,7 +22,7 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('/manager/login', {
+        axios.post('http://localhost:5000/manager/login', {
           id:id,
           password:password
         }).then((res)=>{
