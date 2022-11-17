@@ -2,7 +2,22 @@ import React from 'react';
 import './Topbar.css';
 import { Link } from 'react-router-dom';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import axios from 'axios';
 
+const onClickHandler = () => {
+    axios.get('http://localhost:5000/manager/logout', {
+          }).then((res)=>{
+          if(res.status===200){
+            alert('로그아웃 성공');
+            localStorage.setItem('isLogined',false);
+            window.location.replace("/");
+          } else {
+            alert('로그아웃 실패');
+          }
+        }).catch((err)=>{
+          console.log(err);
+        })
+}
 export default function Topbar(){
     console.log(JSON.parse(localStorage.getItem('isLogined')));
     return (
@@ -18,7 +33,7 @@ export default function Topbar(){
                      JSON.parse(localStorage.getItem('isLogined'))
                      ?
                      <>
-                        <Link to="/Login" className="loginLink">로그아웃</Link>
+                        <button onClick={onClickHandler}>로그아웃</button>
                         <Link to="/Signup" className="signUpLink">내정보</Link>
                      </>
                      :
