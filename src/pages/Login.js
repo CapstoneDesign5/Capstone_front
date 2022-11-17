@@ -29,8 +29,6 @@ const Login = () => {
           if(res.status===200){
             alert('로그인 성공');
             localStorage.setItem('isLogined',res.data.is_logined);
-            console.log(res.data.is_logined);
-            console.log(localStorage.getItem('isLogined'));
             window.location.replace("/");
           } else {
             alert('로그인 실패');
