@@ -31,7 +31,7 @@ const Login = () => {
             localStorage.setItem('isLogined',res.data.is_logined);
             console.log(res.data.is_logined);
             console.log(localStorage.getItem('isLogined'));
-            navigate('/');
+            window.location.replace("/");
           } else {
             alert('로그인 실패');
           }
