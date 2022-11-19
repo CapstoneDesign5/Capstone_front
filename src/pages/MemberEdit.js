@@ -4,42 +4,63 @@
 import * as React from 'react';
 import './css/MemberEdit.css';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { memberRows } from '../dummyData';
 import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from '@mui/icons-material';
-
+import axios from 'axios';
 
 export default function MemberEdit() {
 
+    const [data, setData] = useState([]) 
+
+    useEffect(()=>{
+        if(localStorage.getItem('isLogined')) {
+            axios.get('http://localhost:5000/customer/list')
+                .then((res)=>{
+                    setData(res.data);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+        }else{
+            alert('로그인이 필요합니다.');
+            window.location.replace("/Login");
+        }
+    },[]);
+
     const columns = [ //고객 데이터의 속성
     { 
-        field: 'id', 
-        headerName: 'ID', 
-        width: 70 
+        field: 'RRN', 
+        headerName: '주민등록번호', 
+        width: 120 
     },
     { 
-        field: 'memberName', 
-        headerName: '이름', 
+        field: 'address', 
+        headerName: '주소', 
         width: 100, 
         editable: true
     },
     { 
-        field: 'dateOfBirth', 
-        headerName: '생년월일', 
+        field: 'landline_phone', 
+        headerName: '집전화', 
         width: 120 },
     { 
-        field: 'email', 
-        headerName: 'Email', 
+        field: 'manager_id', 
+        headerName: '관리자 번호', 
         width: 150 },
     { 
-        field: 'phone', 
+        field: 'name', 
+        headerName: '이름', 
+        width: 150 },
+    { 
+        field: 'phone_num', 
         headerName: '휴대전화', 
-        width: 150 },
-    { 
-        field: 'address', 
-        headerName: '주소', 
+        width: 200 },
+    {
+        field: 'remark', 
+        headerName: '특이사항', 
         width: 200 },
     {
         field: 'action',
@@ -61,13 +82,20 @@ export default function MemberEdit() {
     }
     ];
     
-
-    const [data, setData] = useState(memberRows) //dummyData.js의 memberRows 데이터를 받아옴.
     const handleDelete = (id) => { //id를 받으면 기존 데이터 중 같은 id를 제거 후 나머지만 state 다시 저장 
         setData(data.filter((item) => item.id !== id))
     }
-    
 
+    //grid 출력을 위해서 고유 아이디가 필요한데 임의로 생성해서 고유 아이디 부여
+    function generateRandom() {
+        var length = 8,
+            charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+            retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return retVal;
+    }
 
     return (
     <div className="memberEdit">
@@ -85,6 +113,7 @@ export default function MemberEdit() {
                     checkboxSelection
                     disableSelectionOnClick
                     experimentalFeatures={{ newEditingApi: true }}
+                    getRowId={(row) =>  generateRandom()}
                 />
         </Box>
         </div>

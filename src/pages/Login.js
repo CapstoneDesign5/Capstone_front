@@ -8,8 +8,6 @@ import { InputWithLabel, AuthButton } from '../components';
 import './css/Login.css';
 
 const Login = () => {
-    const navigate = useNavigate();
-
     const [id, setID] = useState("");
     const [password, setPassword] = useState("");
 
@@ -29,12 +27,11 @@ const Login = () => {
         }).then((res)=>{
           if(res.status===200){
             alert('로그인 성공');
-            localStorage.setItem('isLogined',res.data.is_logined);
+            localStorage.setItem('isLogined',id);
             window.location.replace("/");
-          } else {
-            alert('로그인 실패');
           }
         }).catch((err)=>{
+          alert('아이디 또는 비밀번호를 다시 입력해주세요.');
           console.log(err);
         })
     }

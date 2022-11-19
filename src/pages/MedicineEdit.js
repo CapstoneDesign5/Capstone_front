@@ -4,42 +4,52 @@
 import * as React from 'react';
 import './css/MedicineEdit.css';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { medicineRows } from '../dummyData';
 import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from '@mui/icons-material';
-
+import axios from 'axios';
 
 export default function MedicineEdit() {
 
+    useEffect(()=>{
+        if(localStorage.getItem('isLogined')) {
+            axios.get('http://localhost:5000/medicineManagement/list')
+                .then((res)=>{
+                    setData(res.data);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+        }else{
+            alert('로그인이 필요합니다.');
+            window.location.replace("/Login");
+        }
+    },[]);
+
     const columns = [ //약품 데이터의 속성
     { 
-        field: 'id', 
-        headerName: 'ID', 
-        width: 70 
-    },
-    { 
-        field: 'medicineName', 
+        field: 'medicine', 
         headerName: '약품명', 
         width: 100, 
         editable: true
     },
     { 
-        field: 'medicineCode', 
-        headerName: '약품코드', 
+        field: 'recommended_dose', 
+        headerName: '1일 권장 용량(정)', 
         width: 120 },
     { 
-        field: 'medicineWeight', 
-        headerName: '약 무게(g)', 
+        field: 'number_of_doses', 
+        headerName: '1일 투약 횟수', 
         width: 150 },
     { 
-        field: 'dosage', 
-        headerName: '1회 투약량', 
+        field: 'weight', 
+        headerName: '무게(g)', 
         width: 150 },
     { 
-        field: 'numberOfMedication', 
-        headerName: '1일 투약횟수', 
+        field: 'memo', 
+        headerName: '기타', 
         width: 200 },
     {
         field: 'action',
@@ -62,12 +72,21 @@ export default function MedicineEdit() {
     ];
     
 
-    const [data, setData] = useState(medicineRows) //dummyData.js의 memberRows 데이터를 받아옴.
+    const [data, setData] = useState([]) //dummyData.js의 memberRows 데이터를 받아옴.
     const handleDelete = (id) => { //id를 받으면 기존 데이터 중 같은 id를 제거 후 나머지만 state 다시 저장 
         setData(data.filter((item) => item.id !== id))
     }
     
 
+    function generateRandom() {
+        var length = 8,
+            charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+            retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return retVal;
+    }
 
     return (
     <div className="medicineEdit">
@@ -85,6 +104,7 @@ export default function MedicineEdit() {
                     checkboxSelection
                     disableSelectionOnClick
                     experimentalFeatures={{ newEditingApi: true }}
+                    getRowId={(row) =>  generateRandom()}
                 />
         </Box>
         </div>

@@ -5,21 +5,23 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import axios from 'axios';
 
 const onClickHandler = () => {
-    axios.get('http://localhost:5000/manager/logout', {
-          }).then((res)=>{
-          if(res.status===200){
-            alert('로그아웃 성공');
-            localStorage.setItem('isLogined',false);
-            window.location.replace("/");
-          } else {
-            alert('로그아웃 실패');
-          }
-        }).catch((err)=>{
-          console.log(err);
-        })
+    // axios.get('http://localhost:5000/manager/logout', {
+    //       }).then((res)=>{
+    //       if(res.status===200){
+    //         alert('로그아웃 성공');
+    //         localStorage.setItem('isLogined',false);
+    //         window.location.replace("/");
+    //       } else {
+    //         alert('로그아웃 실패');
+    //       }
+    //     }).catch((err)=>{
+    //       console.log(err);
+    //     })
+    localStorage.removeItem('isLogined');
+    window.location.replace("/");
 }
+
 export default function Topbar(){
-    console.log(JSON.parse(localStorage.getItem('isLogined')));
     return (
         <div className="topbar">
             <div className="topbarWrapper">
@@ -30,7 +32,7 @@ export default function Topbar(){
                 </div>
                 <div className="topRight">
                 {
-                     JSON.parse(localStorage.getItem('isLogined'))
+                     localStorage.getItem('isLogined')
                      ?
                      <>
                         <button onClick={onClickHandler}>로그아웃</button>
