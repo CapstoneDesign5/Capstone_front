@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-import './MemberReg.css';
+import './css/MemberReg.css';
 
 const MemberReg = () => {
     return (
@@ -36,6 +36,34 @@ const MemberReg = () => {
             </form>
             <button className="newMemberButton">등록</button>
         </div>
+
+
+
+        // <div className="MemberFormWrapper">
+        // <form onSubmit={handleSubmit}>
+        // <div className="MemberFormTitle">
+        //     <h2>약품 정보 등록</h2>
+        // </div>
+        // <div className="MemberFormSection">
+        //     <InputWithLabel input label="주민등록번호" onChange={} type='text' maxLength='15' name='RRN' placeholder="주민등록번호"/>
+        //     <InputWithLabel input label="이름" onChange={} type='text' maxLength='10' name='name' placeholder="이름"/>
+        //     <InputWithLabel input label="주소" onChange={} type='text' maxLength='100' name='address' placeholder="주소"/>
+        //     <InputWithLabel input label="일반전화" onChange={} type='text' maxLength='15' name='landine_phone' placeholder="전화번호"/>
+        //     <InputWithLabel input label="휴대전화" onChange={} type='text' maxLength='15' name='phone_num' placeholder="휴대전화"/> 
+        //     <InputWithLabel input label="특이사항" onChange={} type='text' maxLength='100' name='remark' placeholder="기타"/> 
+                
+        //     <button type='submit'>등록</button>
+        // </div>
+        // </form>
+        // </div>
+
+
+
+
+
+
+
+
     )
 }
 

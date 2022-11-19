@@ -2,7 +2,7 @@
 
 
 import * as React from 'react';
-import './MemberEdit.css';
+import './css/MemberEdit.css';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { memberRows } from '../dummyData';

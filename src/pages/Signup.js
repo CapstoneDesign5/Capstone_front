@@ -2,7 +2,9 @@
 
 import React, {useState} from 'react';
 import axios from 'axios';
-// import './Signup.css';
+import InputWithLabel from '../components/InputWithLabel';
+import AuthButton from '../components/AuthButton';
+import './css/Signup.css';
 
 const Signup = () => {
   const [id, setID] = useState("");
@@ -51,61 +53,23 @@ const Signup = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-        <div>
-          <h3 id='signup_title'> 회원가입 (Signup) </h3>
+    <div className="SignupFormWrapper">
+      <form onSubmit={handleSubmit}>
+        <div className="SignupFormTitle">
+            <h2>회원가입 (Signup)</h2>
         </div>
-        <div className='Signup'>
-          <div>
-            {/* 아이디 */}
-            <div>
-              <h5> 아이디 </h5>
-              <input onChange={handleIdChange} type='text' maxLength='20' name='signup_id'/>
-            </div>
-
-            {/* 비밀번호 */}
-            <div>
-              <h5> 비밀번호 </h5>
-              <input onChange={handlePasswordChange} type='password' maxLength='15' name='signup_password'/>
-            </div>
-
-            {/* 비밀번호 */}
-            {/* <div>
-              <h5> 비밀번호 확인 </h5>
-              <input type='password' maxLength='15' name='signup_pswCheck'/>
-            </div> */}
-          </div>
-
-          <div id='signup_section'>
-            {/* 이름 */}
-            <div>
-              <h5> 이름 </h5>
-              <input onChange={handleNameChange} type='text' maxLength='10' name='signup_name'/>
-            </div>
-
-            {/* 휴대폰 번호 */}
-            <div>
-              <h5> 휴대폰 번호 </h5>
-              <input onChange={handlePhoneNumChange} type='text' maxLength='20' name='signup_phone_num'/>
-            </div>
-
-            {/* 생년월일 */}
-            <div>
-              <h5> 이메일 </h5>
-              <input onChange={handleEmail} type='text' maxLength='30' name='signup_email'/> 
-              {/* @
-              <select name='signup_email_select'>
-                <option value='gmail.com'> gmail.com </option>
-                <option value='naver.com'> naver.com </option>
-              </select> */}
-            </div>
-          </div>
-        </div>
-
-        <div>
+        <div className="SignupFormSection">
+          <InputWithLabel input label="아이디" onChange={handleIdChange} type='text' maxLength='20' name='signup_id' placeholder="아이디"/>
+          <InputWithLabel input label="비밀번호" onChange={handlePasswordChange} type='password' maxLength='15' name='signup_password' placeholder="비밀번호"/>
+          {/* <InputWithLabel label="비밀번호 확인" type='password' maxLength='15' name='signup_pswCheck'/> */}
+          <InputWithLabel input label="이름" onChange={handleNameChange} type='text' maxLength='10' name='signup_name' placeholder="이름"/>
+          <InputWithLabel input label="휴대전화" onChange={handlePhoneNumChange} type='text' maxLength='20' name='signup_phone_num' placeholder="010-xxxx-xxxx"/>
+          <InputWithLabel input label="이메일" onChange={handleEmail} type='text' maxLength='30' name='signup_email' placeholder="xxx@gmail.com"/> 
+              
           <button type='submit'>가입하기</button>
         </div>
       </form>
+    </div>
     )
 }
 

@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-// import './ProfileEdit.css';
+// import './css/ProfileEdit.css';
 
 const ProfileEdit = () => {
     return (

@@ -2,7 +2,7 @@
 
 
 import * as React from 'react';
-import './MedicineEdit.css';
+import './css/MedicineEdit.css';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { medicineRows } from '../dummyData';

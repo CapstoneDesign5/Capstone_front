@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-// import './PasswordEdit.css';
+// import './css/PasswordEdit.css';
 
 const PasswordEdit = () => {
     return (
