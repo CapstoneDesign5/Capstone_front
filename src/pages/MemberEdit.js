@@ -5,7 +5,6 @@ import * as React from 'react';
 import './css/MemberEdit.css';
 import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react';
-import { memberRows } from '../dummyData';
 import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from '@mui/icons-material';

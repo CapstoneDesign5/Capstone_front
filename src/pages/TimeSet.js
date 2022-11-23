@@ -2,8 +2,9 @@
 
 
 import React from 'react';
+import { InputWithLabel } from '../components';
 import './css/TimeSet.css';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -82,37 +83,36 @@ const TimeSet = () => {
 
 
     return (
-        <div className="newTimeSet">
-            <h1 className="newTimeSetTitle">기기 시간 설정</h1>
-            <form className="newTimeSetForm" onSubmit={handleSubmit}>
-                <div className="newTimeSetItem">
-                    <label>주민등록번호</label>
-                    <input onChange={handletimeRRNChange} type="text" placeholder="xxxxxx-xxxxxxx" />
+        <div className="TimeSetFormWrapper">
+            <form onSubmit={handleSubmit}>
+                <div className="TimeSetFormTitle">
+                    <h1>기기 시간 설정</h1>
                 </div>
-                <div className="newTimeSetItem">
-                    <label>날짜</label>
-                    <input onChange={handleTimeChange} type="date" placeholder="xxxx.xx.xx" />
-                </div>
-                <div className="newTimeSetItem">
-                    <label>시간</label>
-                    <input onChange={handleDateChange} type="time" placeholder="00시 00분" />
-                </div>
-                <FormControl sx={{marginTop: 5, minWidth: 400}} size="small">
+                <div className="TimeSetFormSection">
+                    <InputWithLabel input label="주민등록번호" onChange={handletimeRRNChange} type="text" placeholder="xxxxxx-xxxxxxx" />
+                    <InputWithLabel input label="날짜" onChange={handleDateChange} type="date" placeholder="xxxx.xx.xx" />
+                    <InputWithLabel input label="시간" onChange={handleTimeChange} type="time" placeholder="00시 00분" />
+
+
+                    <FormControl sx={{marginTop: 5, minWidth: 400}} size="small" >
                     <InputLabel id="demo-simple-select-label">복용 약품명</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={timeMedicine}
-                        label="Medicine"
-                        onChange={handleTimeMedicineChange}>
-                        {data.map((item) => { //약품 등록 리스트에서 등록된 약품명 가져와서 목록 출력
-                            return (
-                                <MenuItem key = {generateRandom()} value={item.medicine}>{item.medicine}</MenuItem>
-                            );
-                        })}
-                    </Select>
-                </FormControl>
-                <button className="newTimeSetButton" type='submit'>등록</button>
+                        {/* <div className="NameOfMedicineLabel">복용 약품명</div> */}
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={timeMedicine}
+                            label="Medicine"
+                            onChange={handleTimeMedicineChange}>
+                            {data.map((item) => { //약품 등록 리스트에서 등록된 약품명 가져와서 목록 출력
+                                return (
+                                    <MenuItem key = {generateRandom()} value={item.medicine}>{item.medicine}</MenuItem>
+                                );
+                            })}
+                        </Select>
+                    </FormControl>
+
+                    <button className="newTimeSetButton" type='submit'>등록</button>
+                </div>
             </form>
         </div>
     )

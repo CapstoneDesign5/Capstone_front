@@ -1,32 +1,5 @@
-.newMedicine {
-    padding: 10px;
-}
-
-.newMedicineForm {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.newMedicineItem {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    margin-top: 10px;
-    margin-right: 20px;
-}
-
-.newMedicineItem > label {
-    margin-bottom: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(121, 121,121);
-}
-
-.newMedicineItem > input {
-    height: 20px;
-    padding: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
+.MedicineFormWrapper {
+    margin: 20px;
 }
 
 .newMedicineButton {
