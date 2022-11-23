@@ -93,7 +93,6 @@ const TimeSet = () => {
                     <InputWithLabel input label="날짜" onChange={handleDateChange} type="date" placeholder="xxxx.xx.xx" />
                     <InputWithLabel input label="시간" onChange={handleTimeChange} type="time" placeholder="00시 00분" />
 
-
                     <FormControl sx={{marginTop: 5, minWidth: 400}} size="small" >
                     <InputLabel id="demo-simple-select-label">복용 약품명</InputLabel>
                         {/* <div className="NameOfMedicineLabel">복용 약품명</div> */}
