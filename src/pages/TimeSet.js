@@ -91,11 +91,11 @@ const TimeSet = () => {
                 </div>
                 <div className="newTimeSetItem">
                     <label>날짜</label>
-                    <input onChange={handleTimeChange} type="date" placeholder="xxxx.xx.xx" />
+                    <input onChange={handleDateChange} type="date" placeholder="xxxx.xx.xx" />
                 </div>
                 <div className="newTimeSetItem">
                     <label>시간</label>
-                    <input onChange={handleDateChange} type="time" placeholder="00시 00분" />
+                    <input onChange={handleTimeChange} type="time" placeholder="00시 00분" />
                 </div>
                 <FormControl sx={{marginTop: 5, minWidth: 400}} size="small">
                     <InputLabel id="demo-simple-select-label">복용 약품명</InputLabel>
