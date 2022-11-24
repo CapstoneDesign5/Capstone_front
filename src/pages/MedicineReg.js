@@ -19,7 +19,7 @@ const MedicineReg = () => {
     const [recommanded_dose, setRecommendedDose] = useState(""); //1회 권장 용량
     const [number_of_doses, setNumberOfDoses] = useState(""); //1일 투약 횟수
     const [weight, setWeight] = useState(""); //무게
-    const [memo, setMemo] = useState(""); //기타
+    const [memo, setMemo] = useState("없음"); //기타
 
     const handleMedicineChange = (event) => {
         setMedicine(event.target.value);
@@ -71,7 +71,7 @@ const MedicineReg = () => {
                 <InputWithLabel input label="무게" onChange={handleWeightChange} type="text" placeholder="예) 0.5" />
                 <InputWithLabel input label="1회 권장 용량" onChange={handleRecommendedDoseChange} type="number" placeholder="1" />
                 <InputWithLabel input label="1일 투약 횟수" onChange={handleNumberOfDosesChange} type="number" placeholder="1" />
-                <InputWithLabel input label="기타" onChange={handleMemo} type="text" /> 
+                <InputWithLabel input label="기타" onChange={handleMemo} type="text" placeholder="없음"/> 
                     
                 <button className="newMedicineButton" type='submit'>등록</button>
             </div>

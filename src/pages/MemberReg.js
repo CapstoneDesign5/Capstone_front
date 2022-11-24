@@ -62,6 +62,7 @@ const MemberReg = () => {
       }).then((res)=>{
         if(res.status===200){
           alert('회원 정보 등록 성공');
+          window.location.replace("/memberEdit");
         }
       }).catch((err)=>{
         alert('회원 정보 등록 실패');

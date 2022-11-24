@@ -17,7 +17,14 @@ const ProfileEdit = () => {
         if(localStorage.getItem('isLogined')) { 
             axios.get('http://localhost:5000/manager/Info/'+localStorage.getItem('isLogined'))
             .then((res)=>{
-                setManagerData(res.data);
+                setName(res.data[0].name); //상단 관리자 정보 출력을 위해서 저장
+                setNewName(res.data[0].name); //입력폼이 공백이면 기존의 정보를 서버로 넘겨주기 위해서 저장
+                //입력폼의 값이 변경된 경우 관리자 정보가 변경되기 전에는 상단 관리자 정보 출력 부분의 데이터를 변경시키지 않기 위해
+                //New를 붙여서 기존의 관리자 정보와 새로운 관리자 정보를 따로 관리
+                setPhoneNum(res.data[0].phone_num);
+                setNewPhoneNum(res.data[0].phone_num);
+                setEmail(res.data[0].e_mail);
+                setNewEmail(res.data[0].e_mail);
             })
             .catch((err)=>{
                 console.log(err);
@@ -29,59 +36,67 @@ const ProfileEdit = () => {
     },[]);
 
     const [expanded, setExpanded] = useState(false);
-    const [managerData, setManagerData] = useState([]);
 
-    // const [Managerid, setManagerId] = useState("");
-    // const [name, setName] = useState("");
-    // const [phoneNum, setPhoneNum] = useState("");
-    // const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [phoneNum, setPhoneNum] = useState("");
+    const [email, setEmail] = useState("");
 
-    // const handleIdChange = (event) => {
-    //     setManagerId(event.target.value);
-    // }
+    const [newManagerid, setNewManagerId] = useState(localStorage.getItem('isLogined'));
+    const [newName, setNewName] = useState(name);
+    const [newPhoneNum, setNewPhoneNum] = useState(phoneNum);
+    const [newEmail, setNewEmail] = useState(email);
+
+    const handleNewIdChange = (event) => {
+        setNewManagerId(event.target.value);
+    }
   
-    // const handleNameChange = (event) => {
-    //     setName(event.target.value);
-    // }
+    const handleNameChange = (event) => {
+        setNewName(event.target.value);
+    }
   
-    // const handlePhoneNumChange = (event) => {
-    //     setPhoneNum(event.target.value);
-    // }
+    const handlePhoneNumChange = (event) => {
+        setNewPhoneNum(event.target.value);
+    }
   
-    // const handleEmailChange = (event) => {
-    //     setEmail(event.target.value);
-    // }
+    const handleEmailChange = (event) => {
+        setNewEmail(event.target.value);
+    }
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     axios.post('http://localhost:5000/customer/register', {
-    //       RRN:RRN,
-    //       name:name,
-    //       address:address,
-    //       landline_phone:landline_phone,
-    //       phone_num:phone_num,
-    //       remark:remark,
-    //       manager_id:manager_id
-    //     }).then((res)=>{
-    //       if(res.status===200){
-    //         alert('회원 정보 등록 성공');
-    //       }
-    //     }).catch((err)=>{
-    //       alert('회원 정보 등록 실패');
-    //       console.log(err);
-    //     })
-    //   }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(newName);
+        axios.post('http://localhost:5000/manager/update/'+localStorage.getItem('isLogined'), {
+            newId : newManagerid,
+            name : newName,
+            phone_num : newPhoneNum,
+            e_mail : newEmail
+        }).then((res)=>{
+          if(res.status===200){
+            alert('관리자 정보 변경 성공');
+            if(localStorage.getItem('isLogined') != newManagerid) {
+                localStorage.removeItem('isLogined');
+                window.location.replace("/Login");
+            }
+            else {
+                window.location.replace("/profileEdit");
+            }
+          }
+        }).catch((err)=>{
+          alert('관리자 정보 변경 실패');
+          console.log(err);
+        })
+      }
 
     return (
         <div className="ProfileEditFormWrapper">
                 <div className="ProfileEditFormTitle">
                     <h1>개인정보 관리</h1>
                 </div>
-                {/* <form onSubmit={handleSubmit}> */}
+                <form onSubmit={handleSubmit}>
                 <div className="ProfileEditFormSection">
                     <Box sx={{ height: 220, width: 900, marginBottom: 5,}} >
                         <div className="ProfileBox">
@@ -97,12 +112,15 @@ const ProfileEdit = () => {
                                     <Typography sx={{ width: '33%', flexShrink: 0 }}>
                                         아이디
                                     </Typography>
-                                    <Typography sx={{ color: 'text.secondary' }}>{managerData[0].id}</Typography>
+                                    <Typography sx={{ color: 'text.secondary' }}>
+                                        {localStorage.getItem('isLogined')}
+                                    </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                     <Typography>
-                                        Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
-                                        Aliquam eget maximus est, id dignissim quam.
+                                        아이디 변경을 원하시면 하단 아이디 폼에 새로운 아이디를 입력해주세요.
+                                        입력 폼이 공백일 경우 기존의 정보가 그대로 유지됩니다. <br></br>
+                                        * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -114,14 +132,14 @@ const ProfileEdit = () => {
                                     >
                                     <Typography sx={{ width: '33%', flexShrink: 0 }}>이름</Typography>
                                     <Typography sx={{ color: 'text.secondary' }}>
-                                        {managerData[0].name}
+                                        {name}
                                     </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                     <Typography>
-                                        Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus,
-                                        varius pulvinar diam eros in elit. Pellentesque convallis laoreet
-                                        laoreet.
+                                        관리자 이름 변경을 원하시면 하단 이름 폼에 새로운 정보를 입력해주세요.
+                                        입력 폼이 공백일 경우 기존의 정보가 그대로 유지됩니다.<br></br>
+                                        * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -135,13 +153,14 @@ const ProfileEdit = () => {
                                         휴대폰 번호
                                     </Typography>
                                     <Typography sx={{ color: 'text.secondary' }}>
-                                        {managerData[0].phone_num}
+                                        {phoneNum}
                                     </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                     <Typography>
-                                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                                        휴대폰 번호 변경을 원하시면 하단 휴대전화번호 폼에 새로운 휴대폰 번호를 입력해주세요.
+                                        입력 폼이 공백일 경우 기존의 정보가 그대로 유지됩니다. <br></br>
+                                        * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -153,13 +172,14 @@ const ProfileEdit = () => {
                                     >
                                     <Typography sx={{ width: '33%', flexShrink: 0 }}>이메일</Typography>
                                     <Typography sx={{ color: 'text.secondary' }}>
-                                        {managerData[0].e_mail}
+                                        {email}
                                     </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                     <Typography>
-                                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                                        이메일 변경을 원하시면 하단 이메일 폼에 새로운 이메일을 입력해주세요.
+                                        입력 폼이 공백일 경우 기존의 정보가 그대로 유지됩니다. <br></br>
+                                        * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -169,22 +189,22 @@ const ProfileEdit = () => {
                     <Box sx={{ marginTop: 0, height: 50, width: 900, border: 1, textAlign: 'center', paddingTop: 4}} >
                         <div className="MyInfoBox">
                             <label htmlfor="managerName">이름</label>
-                            <input id="managerName" type="text"/>
+                            <input id="managerName" type="text" onChange={handleNameChange}/>
 
                             <label htmlfor="phoneNumber">휴대전화번호</label>
-                            <input id="phoneNumber" type="text"/>
+                            <input id="phoneNumber" type="text" onChange={handlePhoneNumChange}/>
 
-                            <label htmlfor="managerId">아이디</label>
-                            <input id="managerId" type="text"/>
+                            <label htmlfor="managerId" >아이디</label>
+                            <input id="managerId" type="text" onChange={handleNewIdChange}/>
 
                             <label htmlfor="managerEmail">E-mail</label>
-                            <input id="managerEmail" type="text"/>
+                            <input id="managerEmail" type="text" onChange={handleEmailChange}/>
 
                         </div>
                     </Box>
                     <button className="newPasswordbutton">변경</button>
                 </div>
-            {/* </form> */}
+            </form>
         </div>
 
     )
