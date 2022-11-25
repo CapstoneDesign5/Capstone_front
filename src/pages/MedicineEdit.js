@@ -88,24 +88,28 @@ export default function MedicineEdit() {
     }
 
     return (
-    <div className="medicineEdit">
-        <h1>약품정보 조회</h1>
-        <div className="medicineSearch">
-            검색창
+    <div className="medicineEditWrapper">
+        <div className="medicineEditTitle">
+            <h1>약품정보 조회</h1>
         </div>
-        <div className="medicineList">
-            <Box sx={{ height: 500, width: '100%' }}>
-                <DataGrid
-                    rows={data}
-                    columns={columns}
-                    pageSize={10}
-                    rowsPerPageOptions={[5]}
-                    checkboxSelection
-                    disableSelectionOnClick
-                    experimentalFeatures={{ newEditingApi: true }}
-                    getRowId={(row) =>  generateRandom()}
-                />
-            </Box>
+        <div className="medicineEditSection">
+            <div className="medicineSearch">
+                검색창
+            </div>
+            <div className="medicineList">
+                <Box sx={{ height: 500, width: '100%' }}>
+                    <DataGrid
+                        rows={data}
+                        columns={columns}
+                        pageSize={10}
+                        rowsPerPageOptions={[5]}
+                        checkboxSelection
+                        disableSelectionOnClick
+                        experimentalFeatures={{ newEditingApi: true }}
+                        getRowId={(row) =>  generateRandom()}
+                    />
+                </Box>
+            </div>
         </div>
     </div>
     )

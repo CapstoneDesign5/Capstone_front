@@ -1,6 +1,12 @@
-.memberEdit {
+.memberEditWrapper {
+    margin: 20px;
+}
+
+.memberEditSection {
     padding: 10px;
 }
+
+
 .memberListEdit {
     border: none;
     border-radius: 10px;

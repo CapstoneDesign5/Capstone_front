@@ -1,6 +1,11 @@
-.medicineEdit {
+.medicineEditWrapper{
+    margin: 20px;
+}
+
+.medicineEditSection {
     padding: 10px;
 }
+
 .medicineListEdit {
     border: none;
     border-radius: 10px;
