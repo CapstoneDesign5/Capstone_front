@@ -63,7 +63,7 @@ export default function MedicineEdit() {
                 <Link to={'/medicine/' + params.row.id}> 
                 <button className="medicineListEdit">Edit</button>
                 </Link>
-                <DeleteOutline className="medicineListDelete" onClick={()=> handleDelete(params.row.id)}/>
+                <DeleteOutline className="medicineListDelete" onClick={()=> handleDelete(params.row.medicine)}/>
                 </>
             )
         }
@@ -71,9 +71,20 @@ export default function MedicineEdit() {
     ];
     
 
-    const [data, setData] = useState([]) //dummyData.js의 memberRows 데이터를 받아옴.
-    const handleDelete = (id) => { //id를 받으면 기존 데이터 중 같은 id를 제거 후 나머지만 state 다시 저장 
-        setData(data.filter((item) => item.id !== id))
+    const [data, setData] = useState([]) 
+    const handleDelete = (medicine) => { 
+        axios.post('http://localhost:5000/medicineManagement/delete',{
+            medicine: medicine
+        })
+        .then((res)=>{
+          if(res.status===200){
+            alert('약품이 삭제되었습니다.');
+            window.location.replace("/medicineEdit");
+          }
+        }).catch((err)=>{
+          alert('해당 약품을 삭제할 수 없습니다.');
+          console.log(err);
+        })
     }
     
 

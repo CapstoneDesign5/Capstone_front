@@ -28,6 +28,7 @@ const Login = () => {
           if(res.status===200){
             alert('로그인 성공');
             localStorage.setItem('isLogined',id);
+            localStorage.setItem('isLoginPassword',password);
             window.location.replace("/");
           }
         }).catch((err)=>{

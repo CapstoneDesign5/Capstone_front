@@ -4,7 +4,12 @@ import axios from 'axios';
 import React,{useState ,useEffect} from 'react';
 import Box from '@mui/material/Box';
 import './css/PasswordEdit.css';
-
+import FilledInput from '@mui/material/FilledInput';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
 const PasswordEdit = () => {
 
     useEffect(()=>{
@@ -15,11 +20,23 @@ const PasswordEdit = () => {
         }
     },[]);
 
-    const [newPassword, setNewPassword] = useState("");
+    const [newPassword, setNewPassword] = useState(""); //새 비밀번호
 
-    const handlePasswordChange = (event) => {
+    const handleNewPasswordChange = (event) => {
         setNewPassword(event.target.value);
     }
+
+    const [password, setPassword] = useState(""); //기존 비밀번호
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+
+    const [conFirmpassword, setConfirmPassword] = useState(""); //새 비밀번호 확인용
+
+    const handleConfirmPassword = (event) => {
+        setConfirmPassword(event.target.value);
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -29,6 +46,7 @@ const PasswordEdit = () => {
           if(res.status===200){
             alert('비밀번호 변경 성공');
             localStorage.removeItem('isLogined');
+            localStorage.removeItem('isLoginPassword');
             window.location.replace("/Login");
           }
         }).catch((err)=>{
@@ -46,14 +64,51 @@ const PasswordEdit = () => {
         <div className="PasswordEditFormSection">
             <Box sx={{ height: 400, width: 900, border: 1 }} >
                 <div className="PasswordEditFormLabel">
-                    <label htmlfor="oldPassword">기존 비밀번호</label>
-                    <input id="oldPassword" type="password"></input>
+                {
+                    password == localStorage.getItem('isLoginPassword')
+                    ?
+                    <FormControl variant="standard">
+                        <InputLabel htmlFor="component-simple">기존 비밀번호</InputLabel>
+                        <Input type="password" id="component-simple" value={password} onChange={handlePasswordChange} />
+                    </FormControl>
+                    :
+                    <FormControl error variant="standard">
+                        <InputLabel htmlFor="component-error">기존 비밀번호</InputLabel>
+                        <Input
+                        type="password"
+                        id="component-error"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        aria-describedby="component-error-text"
+                        />
+                        <FormHelperText id="component-error-text">Error</FormHelperText>
+                    </FormControl>
+                }
+                    <FormControl variant="standard">
+                        <InputLabel htmlFor="component-simple">새 비밀번호</InputLabel>
+                        <Input type="password" id="component-simple" value={newPassword} onChange={handleNewPasswordChange} />
+                    </FormControl>
 
-                    <label htmlfor="newPassword">새 비밀번호</label>
-                    <input id="newPassword" type="password" onChange={handlePasswordChange}></input>
-
-                    <label htmlfor="confirmPassword">새 비밀번호 확인</label>
-                    <input id="confirmPassword" type="password"></input>
+                {
+                    newPassword == conFirmpassword
+                    ?
+                    <FormControl variant="standard">
+                        <InputLabel htmlFor="component-simple">새 비밀번호 확인</InputLabel>
+                        <Input type="password" id="component-simple" value={conFirmpassword} onChange={handleConfirmPassword} />
+                    </FormControl>
+                    :
+                    <FormControl error variant="standard">
+                        <InputLabel htmlFor="component-error">새 비밀번호 확인</InputLabel>
+                        <Input
+                        type="password"
+                        id="component-error"
+                        value={conFirmpassword}
+                        onChange={handleConfirmPassword}
+                        aria-describedby="component-error-text"
+                        />
+                        <FormHelperText id="component-error-text">Error</FormHelperText>
+                    </FormControl>
+                }
                 </div>
                 <button className="newPasswordbutton">변경</button>
             </Box>

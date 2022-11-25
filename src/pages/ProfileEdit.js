@@ -79,6 +79,7 @@ const ProfileEdit = () => {
             alert('관리자 정보 변경 성공');
             if(localStorage.getItem('isLogined') != newManagerid) {
                 localStorage.removeItem('isLogined');
+                localStorage.removeItem('isLoginPassword');
                 window.location.replace("/Login");
             }
             else {
