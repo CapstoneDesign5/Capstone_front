@@ -71,7 +71,7 @@ export default function MemberEdit() {
                 //Delete 아이콘을 누르면 handleDelete 함수가 호출됨. 
                 //Delete 버튼은 state에 있는 값을 삭제.(dummyData 내용은 그대로임)
                 <>
-                <Link to={'/member/' + params.row.id}> 
+                <Link to={'/member/' + params.row.RRN}> 
                 <button className="memberListEdit">Edit</button>
                 </Link>
                 <DeleteOutline className="memberListDelete" onClick={()=> handleDelete(params.row.id)}/>
