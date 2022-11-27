@@ -2,7 +2,8 @@
     margin: 20px;
 }
 
-.newMedicineButton {
+
+.newMedicineButton{
     width: 200px;
     border: none;
     background-color: darkblue;
@@ -13,4 +14,16 @@
     border-radius: 10px;
     margin-top: 30px;
     cursor: pointer;
+     
+    margin-left: 130px;
+
+    
+
+
+/* 
+&:active {
+    background: orange;
+} */
+
 }
+

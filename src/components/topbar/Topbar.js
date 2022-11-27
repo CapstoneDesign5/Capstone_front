@@ -1,8 +1,7 @@
 import React from 'react';
 import './Topbar.css';
 import { Link } from 'react-router-dom';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import axios from 'axios';
+// import axios from 'axios';
 
 const onClickHandler = () => {
     // axios.get('http://localhost:5000/manager/logout', {
@@ -35,8 +34,8 @@ export default function Topbar(){
                      localStorage.getItem('isLogined')
                      ?
                      <>
-                        <button onClick={onClickHandler}>로그아웃</button>
-                        <Link to="/Signup" className="signUpLink">내정보</Link>
+                        <button className="logoutButton" onClick={onClickHandler}>로그아웃</button>
+                        <Link to="/ProfileEdit" className="signUpLink">내정보</Link>
                      </>
                      :
                      <>
@@ -44,15 +43,6 @@ export default function Topbar(){
                         <Link to="/Signup" className="signUpLink">회원가입</Link>
                      </>
                 }
-                    {/* <div className="topbarIconContainer">
-                        <NotificationsNoneIcon className="NotificationsIcon"/>
-                    <span className="topIconBadge">2</span>
-                    </div>
-                    <img 
-                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                        alt="프로필이미지"
-                        className="topAvatar"
-                    /> */}
                 </div>
             </div>
         </div>
