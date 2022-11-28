@@ -38,7 +38,7 @@ export default function MemberEdit() {
     { 
         field: 'address', 
         headerName: '주소', 
-        width: 100, 
+        width: 150, 
         editable: true
     },
     { 
@@ -71,18 +71,27 @@ export default function MemberEdit() {
                 //Delete 아이콘을 누르면 handleDelete 함수가 호출됨. 
                 //Delete 버튼은 state에 있는 값을 삭제.(dummyData 내용은 그대로임)
                 <>
-                <Link to={'/member/' + params.row.RRN}> 
+                <Link to={'/MemberInfo/' + params.row.RRN}> 
                 <button className="memberListEdit">Edit</button>
                 </Link>
-                <DeleteOutline className="memberListDelete" onClick={()=> handleDelete(params.row.id)}/>
+                <DeleteOutline className="memberListDelete" onClick={()=> handleDelete(params.row.RRN)}/>
                 </>
             )
         }
     }
     ];
     
-    const handleDelete = (id) => { //id를 받으면 기존 데이터 중 같은 id를 제거 후 나머지만 state 다시 저장 
-        setData(data.filter((item) => item.id !== id))
+    const handleDelete = (RRN) => { 
+        axios.delete('http://localhost:5000/customer/delete/'+RRN)
+        .then((res)=>{
+          if(res.status===200){
+            alert('회원 정보가 삭제되었습니다.');
+            window.location.replace("/memberEdit");
+          }
+        }).catch((err)=>{
+          alert('해당 회원 정보를 삭제할 수 없습니다.');
+          console.log(err);
+        })
     }
 
     //grid 출력을 위해서 고유 아이디가 필요한데 임의로 생성해서 고유 아이디 부여

@@ -60,7 +60,7 @@ export default function MedicineEdit() {
                 //Delete 아이콘을 누르면 handleDelete 함수가 호출됨. 
                 //Delete 버튼은 state에 있는 값을 삭제.(dummyData 내용은 그대로임)
                 <>
-                <Link to={'/medicine/' + params.row.medicine}> 
+                <Link to={'/MedicineInfo/' + params.row.medicine}> 
                 <button className="medicineListEdit">Edit</button>
                 </Link>
                 <DeleteOutline className="medicineListDelete" onClick={()=> handleDelete(params.row.medicine)}/>

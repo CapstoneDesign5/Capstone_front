@@ -17,6 +17,7 @@ const onClickHandler = () => {
     //       console.log(err);
     //     })
     localStorage.removeItem('isLogined');
+    alert('로그아웃 되었습니다.');
     window.location.replace("/");
 }
 
