@@ -69,6 +69,20 @@ const TimeSet = () => {
         })
     }
 
+    const lockHandler = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:5000/medicineTime/lockCheck', {
+            lock_check : true
+        }).then((res)=>{
+          if(res.status===200){
+            alert('약통 전체 잠금을 해제합니다.');
+          } 
+        }).catch((err)=>{
+          alert('약통 전체 잠금 해제가 불가능합니다.');
+          console.log(err);
+        })
+    }
+
     function generateRandom() { //map 사용시 고유아이디 필요해서 랜덤 함수 생성
         var length = 8,
             charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -127,7 +141,7 @@ const TimeSet = () => {
               </table>
                     <div className="footer_reg_btn">
                         <button type="submit" className="timeset_submit_btn">등록</button>
-                        <button type="submit" className="unlock_btn">잠금 해제</button>
+                        <button type="submit" className="unlock_btn" onClick={lockHandler}>잠금 해제</button>
                     </div>
             </form>
             </div>
