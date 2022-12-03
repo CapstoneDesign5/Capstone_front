@@ -15,6 +15,7 @@ const MedicineInfo = () => {
                 medicine : medicine
             })
             .then((res)=>{
+                setMedicineName(res.data[0].medicine);
                 setRecommendedDose(res.data[0].recommended_dose); //상단 관리자 정보 출력을 위해서 저장
                 setNewRecommendedDose(res.data[0].recommended_dose); //입력폼이 공백이면 기존의 정보를 서버로 넘겨주기 위해서 저장
                 //입력폼의 값이 변경된 경우 관리자 정보가 변경되기 전에는 상단 관리자 정보 출력 부분의 데이터를 변경시키지 않기 위해
@@ -35,6 +36,7 @@ const MedicineInfo = () => {
         }
     },[]);
 
+    const [medicineName, setMedicineName] = useState("");
     const [recommendedDose, setRecommendedDose] = useState("");
     const [numberDoses, setNumberDoses] = useState("");
     const [weight, setWeight] = useState("");
@@ -91,7 +93,7 @@ const MedicineInfo = () => {
                     <tbody>
                         <tr>
                             <th>약품명</th>
-                            <td><input className="inputSize" label="약품명" type="text" disabled placeholder={recommendedDose} /></td>
+                            <td><input className="inputSize" label="약품명" type="text" disabled placeholder={medicineName} /></td>
                         </tr>
                         <tr>
                             <th>1일 권장 용량</th>

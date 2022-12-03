@@ -104,7 +104,7 @@ const MemberInfo = () => {
                       </tr>
                       <tr>
                           <th>주민등록번호</th>
-                          <td><input className="inputSize" label="주민등록번호" type="text" disabled placeholder={name} onChange={handleNewNameChange} /></td>
+                          <td><input className="inputSize" label="주민등록번호" type="text" disabled placeholder={RRN} onChange={handleNewNameChange} /></td>
                       </tr>
                       <tr>
                           <th>주소</th>
