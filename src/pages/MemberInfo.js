@@ -91,11 +91,9 @@ const MemberInfo = () => {
 
     return (
       <div className="MemberInfoWrapper">
-      <h2>고객 정보 수정 페이지입니다.</h2>
-      <div className="MemberInfoSection">
-          <fieldset>
-              <legend>고객 정보 수정</legend>
-              <form onSubmit={handleSubmit}>
+      <h2>고객 정보 수정</h2>
+      <div className="form_container">
+            <form onSubmit={handleSubmit}>
               <table>
                   <thead>
                   </thead>
@@ -103,6 +101,10 @@ const MemberInfo = () => {
                       <tr>
                           <th>이름</th>
                           <td><input className="inputSizeSmall" label="이름" type="text" placeholder={name} onChange={handleNewNameChange} /></td>
+                      </tr>
+                      <tr>
+                          <th>주민등록번호</th>
+                          <td><input className="inputSize" label="주민등록번호" type="text" disabled placeholder={name} onChange={handleNewNameChange} /></td>
                       </tr>
                       <tr>
                           <th>주소</th>
@@ -122,13 +124,14 @@ const MemberInfo = () => {
                       </tr>
                   </tbody>
                   <tfoot>
+                        <div className="footer_reg_btn>">
+                            <button type="submit" className="submit_btn">변경</button>
+                        </div>
                   </tfoot>
               </table>
-              <button>변경</button>
-              </form>
-          </fieldset>
-      </div>
-  </div>
+            </form>
+        </div>
+    </div>
     )
 }
 

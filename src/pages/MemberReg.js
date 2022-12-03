@@ -3,7 +3,6 @@
 
 import React, {useState ,useEffect} from 'react';
 import axios from 'axios';
-import { InputWithLabel } from '../components';
 import './css/MemberReg.css';
 
 const MemberReg = () => {
@@ -71,22 +70,47 @@ const MemberReg = () => {
     }
 
     return (
-        <div className="MemberFormWrapper">
+        <div className="MemberRegWrapper">
+            <h2>고객 정보 등록</h2>
+            <div className="form_container">
             <form onSubmit={handleSubmit}>
-                <div className="MemberFormTitle">
-                    <h1>고객정보등록</h1>
-                </div>
-                <div className="MemberFormSection">
-                    <InputWithLabel input label="주민등록번호" type="text" onChange={handleRRNChange} placeholder="xxxxxx-xxxxxxx" required />
-                    <InputWithLabel input label="이름" type="text" onChange={handleNameChange} placeholder="홍길동" />
-                    <InputWithLabel input label="주소" type="tel" onChange={handleAddressChange} placeholder="xx시 xx군" />
-                    <InputWithLabel input label="집 전화" type="tel" onChange={handleLandlinePhoneChange} placeholder="xxx-xxx-xxxx" />
-                    <InputWithLabel input label="휴대전화" type="text" onChange={handlePhoneNumChange} placeholder="010-xxxx-xxxx" /> 
-                    <InputWithLabel input label="기타" type="text" onChange={handleRemakrChange} placeholder="없음" /> 
-                        
-                    <button className="newMemberButton" type='submit'>등록</button>
-                </div>
+            <table>
+                  <thead>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th>주민등록번호</th>
+                          <td><input className="inputSizeSmall" label="주민등록번호" type="text" onChange={handleRRNChange} placeholder="xxxxxx-xxxxxxx" required /></td>
+                      </tr>
+                      <tr>
+                          <th>이름</th>
+                          <td><input className="inputSize" label="이름" type="text" onChange={handleNameChange} placeholder="홍길동" /></td>
+                      </tr>
+                      <tr>
+                          <th>주소</th>
+                          <td><input className="inputSize" label="주소" type="text" onChange={handleAddressChange} placeholder="xx시 xx군" /></td>
+                      </tr>
+                      <tr>
+                          <th>집 전화</th>
+                          <td><input className="inputSize" label="집 전화" type="tel" onChange={handleLandlinePhoneChange} placeholder="xxx-xxx-xxxx" /></td>
+                      </tr>
+                      <tr>
+                          <th>휴대전화</th>
+                          <td><input className="inputSize" label="휴대전화" type="tel" onChange={handlePhoneNumChange} placeholder="010-xxxx-xxxx" /></td>
+                      </tr>
+                      <tr>
+                          <th>기타</th>
+                          <td><input className="inputSizeBig" label="기타" type="text" onChange={handleRemakrChange} placeholder="없음" /></td>
+                      </tr>
+                  </tbody>
+                  <tfoot>
+                        <div className="footer_reg_btn>">
+                            <button type="submit" className="submit_btn">등록</button>
+                        </div>
+                  </tfoot>
+              </table>
             </form>
+            </div>
         </div>
     )
 }

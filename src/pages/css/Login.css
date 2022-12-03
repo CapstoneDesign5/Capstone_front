@@ -1,3 +1,37 @@
-.LoginFormWrapper {
-    margin: 20px;
+.login_container{
+    padding: 20px;
+    margin: 50px 0px 0px 300px;
+    text-align: center;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    box-shadow: 5px 5px 5px 5px rgb(176, 176, 176);
+}
+
+#login_text{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.signup_link{
+    display: block;
+    text-align: right;
+    margin-right: 40px;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.login_submit_btn{
+    width: 150px;
+    height: 40px;
+    left: 50%;
+    margin-top: 30px;
+    border: none;
+    background-color: rgb(68, 68, 217);
+    color: white;
+    padding: 7px 7px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
 }

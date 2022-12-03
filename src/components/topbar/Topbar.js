@@ -27,7 +27,7 @@ export default function Topbar(){
             <div className="topbarWrapper">
                 <div className="topLeft">
                     <div className="logo">
-                        <Link to="/">Admin</Link>
+                        <Link to="/">복약 관리 시스템</Link>
                     </div>
                 </div>
                 <div className="topRight">
@@ -36,12 +36,12 @@ export default function Topbar(){
                      ?
                      <>
                         <button className="logoutButton" onClick={onClickHandler}>로그아웃</button>
-                        <Link to="/ProfileEdit" className="signUpLink">내정보</Link>
+                        <Link to="/ProfileEdit" id="link_btn">내 정보</Link>
                      </>
                      :
                      <>
-                        <Link to="/Login" className="loginLink">로그인</Link>
-                        <Link to="/Signup" className="signUpLink">회원가입</Link>
+                        <Link to="/Login" id="link_btn">로그인</Link>
+                        <Link to="/Signup" id="link_btn">회원가입</Link>
                      </>
                 }
                 </div>

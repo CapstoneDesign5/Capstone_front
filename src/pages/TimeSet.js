@@ -2,9 +2,7 @@
 
 
 import React from 'react';
-import { InputWithLabel } from '../components';
 import './css/TimeSet.css';
-// import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -83,36 +81,56 @@ const TimeSet = () => {
 
 
     return (
-        <div className="TimeSetFormWrapper">
+        <div className="TimeSetWrapper">
+            <h2>기기 시간 설정</h2>
+            <div className="timeSet_form_container">
             <form onSubmit={handleSubmit}>
-                <div className="TimeSetFormTitle">
-                    <h1>기기 시간 설정</h1>
-                </div>
-                <div className="TimeSetFormSection">
-                    <InputWithLabel input label="주민등록번호" onChange={handletimeRRNChange} type="text" placeholder="xxxxxx-xxxxxxx" />
-                    <InputWithLabel input label="날짜" onChange={handleDateChange} type="date" placeholder="xxxx.xx.xx" />
-                    <InputWithLabel input label="시간" onChange={handleTimeChange} type="time" placeholder="00시 00분" />
-
-                    <FormControl sx={{marginTop: 5, minWidth: 400}} size="small" >
-                    <InputLabel id="demo-simple-select-label">복용 약품명</InputLabel>
-                        {/* <div className="NameOfMedicineLabel">복용 약품명</div> */}
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={timeMedicine}
-                            label="Medicine"
-                            onChange={handleTimeMedicineChange}>
-                            {data.map((item) => { //약품 등록 리스트에서 등록된 약품명 가져와서 목록 출력
-                                return (
-                                    <MenuItem key = {generateRandom()} value={item.medicine}>{item.medicine}</MenuItem>
-                                );
-                            })}
-                        </Select>
-                    </FormControl>
-
-                    <button className="newTimeSetButton" type='submit'>등록</button>
-                </div>
+            <table>
+                  <thead>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th>주민등록번호</th>
+                          <td><input className="inputSizeSmall" label="주민등록번호" onChange={handletimeRRNChange} type="text" placeholder="xxxxxx-xxxxxxx" /></td>
+                      </tr>
+                      <tr>
+                          <th>날짜</th>
+                          <td><input className="inputSize" label="날짜" onChange={handleDateChange} type="date" placeholder="xxxx.xx.xx" /></td>
+                      </tr>
+                      <tr>
+                          <th>시간</th>
+                          <td><input className="inputSize" label="시간" onChange={handleTimeChange} type="time" placeholder="00시 00분" /></td>
+                      </tr>
+                      <tr>
+                          <th>복용 약품명</th>
+                          <td>
+                            <FormControl sx={{minWidth: 400}} size="small" >
+                                <InputLabel id="demo-simple-select-label">복용 약품명</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={timeMedicine}
+                                        label="Medicine"
+                                        onChange={handleTimeMedicineChange}>
+                                        {data.map((item) => { //약품 등록 리스트에서 등록된 약품명 가져와서 목록 출력
+                                            return (
+                                                <MenuItem key = {generateRandom()} value={item.medicine}>{item.medicine}</MenuItem>
+                                            );
+                                        })}
+                                    </Select>
+                            </FormControl>
+                          </td>
+                      </tr>
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+              </table>
+                    <div className="footer_reg_btn">
+                        <button type="submit" className="timeset_submit_btn">등록</button>
+                        <button type="submit" className="unlock_btn">잠금 해제</button>
+                    </div>
             </form>
+            </div>
         </div>
     )
 }

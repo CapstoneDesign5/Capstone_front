@@ -3,7 +3,6 @@
 
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { InputWithLabel } from '../components';
 import './css/MedicineReg.css';
 
 const MedicineReg = () => {
@@ -61,21 +60,43 @@ const MedicineReg = () => {
       }
 
     return (
-        <div className="MedicineFormWrapper">
-          <form onSubmit={handleSubmit}>
-            <div className="MedicineFormTitle">
-                <h1>약품 정보 등록</h1>
+        <div className="MedicineRegWrapper">
+            <h2>약품 정보 등록</h2>
+            <div className="form_container">
+            <form onSubmit={handleSubmit}>
+            <table>
+                  <thead>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th>약품명</th>
+                          <td><input className="inputSizeSmall" label="약품명" onChange={handleMedicineChange} type="text" placeholder="예) 노브카핀정" /></td>
+                      </tr>
+                      <tr>
+                          <th>무게</th>
+                          <td><input className="inputSize" label="무게" onChange={handleWeightChange} type="text" placeholder="예) 0.5" /></td>
+                      </tr>
+                      <tr>
+                          <th>1회 권장 용량</th>
+                          <td><input className="inputSize" label="1회 권장 용량" onChange={handleRecommendedDoseChange} type="number" placeholder="1" /></td>
+                      </tr>
+                      <tr>
+                          <th>1일 투약 횟수</th>
+                          <td><input className="inputSize" label="1일 투약 횟수" onChange={handleNumberOfDosesChange} type="number" placeholder="1" /></td>
+                      </tr>
+                      <tr>
+                          <th>기타</th>
+                          <td><input className="inputSizeBig" label="기타" onChange={handleMemo} type="text" placeholder="없음"/></td>
+                      </tr>
+                  </tbody>
+                  <tfoot>
+                        <div className="footer_reg_btn>">
+                            <button type="submit" className="submit_btn">등록</button>
+                        </div>
+                  </tfoot>
+              </table>
+            </form>
             </div>
-            <div className="MedicineFormSection">
-                <InputWithLabel input label="약품명" onChange={handleMedicineChange} type="text" placeholder="예) 노브카핀정" />
-                <InputWithLabel input label="무게" onChange={handleWeightChange} type="text" placeholder="예) 0.5" />
-                <InputWithLabel input label="1회 권장 용량" onChange={handleRecommendedDoseChange} type="number" placeholder="1" />
-                <InputWithLabel input label="1일 투약 횟수" onChange={handleNumberOfDosesChange} type="number" placeholder="1" />
-                <InputWithLabel input label="기타" onChange={handleMemo} type="text" placeholder="없음"/> 
-                    
-                <button className="newMedicineButton" type='submit'>등록</button>
-            </div>
-          </form>
         </div>
     )
 }

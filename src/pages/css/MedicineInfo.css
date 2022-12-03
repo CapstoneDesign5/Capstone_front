@@ -2,34 +2,38 @@
     margin: 20px;
 }
 
-.MedicineInfoSection{
+h2 {
     margin: 20px;
+}
+
+.form_container{
+    padding: 20px 20px 100px 20px;
+    margin: 20px;
+    width: auto;
+    background-color: white;
+    box-shadow: 5px 5px 5px 5px rgb(176, 176, 176);
 }
 
 table{
     margin: 10px;
     padding: 10px;
-    border-top: 1px solid #444444;
+    width: 1100px;
+    border-top: 1.5px solid rgb(180, 180, 180);
+    border-bottom: 1.5px solid rgb(180, 180, 180);
     border-collapse: collapse;
-    /* background-color: antiquewhite; */
-}
-
-tr{
-    height: 50px;
 }
 
 th {
     text-align: left;
-    padding: 0px 10px 0px 10px;
-    width: 200px;
-    background-color: rgb(200, 200, 200);
+    padding: 0px 10px 0px 15px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    background-color: #f0f0f0;
     font-size: 13px;
-    border-bottom: 0.5px solid #444444;
 }
 
 td {
-    padding: 0px 10px 0px 10px;
-    border-bottom: 0.5px solid #444444;
+    padding: 10px;
+    border-bottom: 1px solid rgb(180, 180, 180);
 }
 
 .inputSize {
@@ -52,4 +56,25 @@ td {
     height: 100px;
     border: 1px solid #aaa;
     border-radius: 5px;
+}
+
+.footer_reg_btn{
+    width: 100%;
+    position: relative;
+}
+
+.submit_btn{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    margin-top: 30px;
+    border: none;
+    background-color: rgb(68, 68, 217);
+    color: white;
+    padding: 7px 7px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
 }

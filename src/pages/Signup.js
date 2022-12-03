@@ -3,7 +3,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import InputWithLabel from '../components/InputWithLabel';
-import AuthButton from '../components/AuthButton';
 import './css/Signup.css';
 
 const Signup = () => {

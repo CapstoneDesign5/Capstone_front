@@ -56,65 +56,83 @@ const PasswordEdit = () => {
       }
 
     return (
-    <div className="PasswordEditFormWrapper">
-        <form onSubmit={handleSubmit}>
-        <div className="PasswordEditFormTitle">
-            <h1>비밀번호 변경</h1>
+        <div className="PasswordEditWrapper">
+            <h2>비밀번호 변경</h2>
+            <div className="password_container">
+                <form onSubmit={handleSubmit}>
+                <table>
+                  <thead>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th id="password_input_th">기존 비밀번호</th>
+                          <td>
+                            {
+                                password == localStorage.getItem('isLoginPassword')
+                                ?
+                                <FormControl variant="standard">
+                                    <InputLabel htmlFor="component-simple">기존 비밀번호</InputLabel>
+                                    <Input type="password" id="password_input" value={password} onChange={handlePasswordChange} />
+                                </FormControl>
+                                :
+                                <FormControl error variant="standard">
+                                    <InputLabel htmlFor="component-error">기존 비밀번호</InputLabel>
+                                    <Input
+                                    type="password"
+                                    id="password_input"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    aria-describedby="component-error-text"
+                                    />
+                                    <FormHelperText id="component-error-text">Error</FormHelperText>
+                                </FormControl>
+                            }
+                          </td>
+                      </tr>
+                      <tr>
+                          <th id="password_input_th">새 비밀번호</th>
+                          <td>
+                            <FormControl variant="standard">
+                                <InputLabel htmlFor="component-simple">새 비밀번호</InputLabel>
+                                <Input type="password" id="password_input" value={newPassword} onChange={handleNewPasswordChange} />
+                            </FormControl>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th id="password_input_th">새 비밀번호 확인</th>
+                          <td>
+                            {
+                                newPassword == conFirmpassword
+                                ?
+                                <FormControl variant="standard">
+                                    <InputLabel htmlFor="component-simple">새 비밀번호 확인</InputLabel>
+                                    <Input type="password" id="password_input" value={conFirmpassword} onChange={handleConfirmPassword} />
+                                </FormControl>
+                                :
+                                <FormControl error variant="standard">
+                                    <InputLabel htmlFor="component-error">새 비밀번호 확인</InputLabel>
+                                    <Input
+                                    type="password"
+                                    id="password_input"
+                                    value={conFirmpassword}
+                                    onChange={handleConfirmPassword}
+                                    aria-describedby="component-error-text"
+                                    />
+                                    <FormHelperText id="component-error-text">Error</FormHelperText>
+                                </FormControl>
+                            }
+                        </td>
+                      </tr>
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+              </table>
+                        <div className="footer_reg_btn>">
+                            <button type="submit" className="password_edit_btn">변경</button>
+                        </div>
+                </form>
+            </div>
         </div>
-        <div className="PasswordEditFormSection">
-            <Box sx={{ height: 400, width: 900, border: 1 }} >
-                <div className="PasswordEditFormLabel">
-                {
-                    password == localStorage.getItem('isLoginPassword')
-                    ?
-                    <FormControl variant="standard">
-                        <InputLabel htmlFor="component-simple">기존 비밀번호</InputLabel>
-                        <Input type="password" id="component-simple" value={password} onChange={handlePasswordChange} />
-                    </FormControl>
-                    :
-                    <FormControl error variant="standard">
-                        <InputLabel htmlFor="component-error">기존 비밀번호</InputLabel>
-                        <Input
-                        type="password"
-                        id="component-error"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        aria-describedby="component-error-text"
-                        />
-                        <FormHelperText id="component-error-text">Error</FormHelperText>
-                    </FormControl>
-                }
-                    <FormControl variant="standard">
-                        <InputLabel htmlFor="component-simple">새 비밀번호</InputLabel>
-                        <Input type="password" id="component-simple" value={newPassword} onChange={handleNewPasswordChange} />
-                    </FormControl>
-
-                {
-                    newPassword == conFirmpassword
-                    ?
-                    <FormControl variant="standard">
-                        <InputLabel htmlFor="component-simple">새 비밀번호 확인</InputLabel>
-                        <Input type="password" id="component-simple" value={conFirmpassword} onChange={handleConfirmPassword} />
-                    </FormControl>
-                    :
-                    <FormControl error variant="standard">
-                        <InputLabel htmlFor="component-error">새 비밀번호 확인</InputLabel>
-                        <Input
-                        type="password"
-                        id="component-error"
-                        value={conFirmpassword}
-                        onChange={handleConfirmPassword}
-                        aria-describedby="component-error-text"
-                        />
-                        <FormHelperText id="component-error-text">Error</FormHelperText>
-                    </FormControl>
-                }
-                </div>
-                <button className="newPasswordbutton">변경</button>
-            </Box>
-        </div>
-        </form>
-    </div>
     )
 }
 

@@ -1,8 +1,7 @@
 .topbar {
     width: 100%;
-    height: 50px;
-    background-color: gray;
-
+    height: 70px;
+    background-color: rgb(35, 35, 123);
     position: sticky; /* 스크롤 내려도 화면에 보이게 */
     top: 0;
     z-index: 999; /*우선순위*/
@@ -18,9 +17,9 @@
 
 .logo {
     font-weight: bold;
-    font-size: 30px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;    
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
 }
 
 .topRight {
@@ -28,49 +27,21 @@
     align-items: center;
 }
 
-.loginLink{
+#link_btn{
     color: white;
-    font-size: 12px;
-    margin-left: 10px;    
-    margin-right: 10px;
-
-}
-.signUpLink{
-    color: white;
-    font-size: 12px;
-    margin-left: 10px;    
-    margin-right: 10px;
-
-}
-
-.topbarIconContainer {
-    position: relative;
-    margin-left: 10px;    
-    margin-right: 10px;
-    color: black;
-}
-
-.NotificationsIcon{
+    font-size: 14px;
+    margin-left: 15px;    
+    margin-right: 15px;
     cursor: pointer;
 }
 
-/*종 아이콘 뱃지*/
-.topIconBadge {
-    position: absolute;
-    top: -5px;
-    right: 5px;
-
-    background-color: red;
-    border-radius: 50%;
-    height: 15px;
-    width: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 13px;
+.logoutButton{
+    all: unset;
     color: white;
+    font-size: 14px;
+    margin-left: 15px;    
+    margin-right: 15px;
+    cursor: pointer;
 }
 
 .topAvatar {

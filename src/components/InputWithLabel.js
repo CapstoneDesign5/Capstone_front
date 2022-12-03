@@ -10,6 +10,7 @@ const Wrapper = styled.div`
     `;
 
 const Label = styled.div`
+    width: 150px;
     margin-bottom: 10px;
     font-size: 14px;
     font-weight: 600;

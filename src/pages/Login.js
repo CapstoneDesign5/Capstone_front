@@ -4,7 +4,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { InputWithLabel, AuthButton } from '../components';
+import { InputWithLabel } from '../components';
+import { Link } from 'react-router-dom';
 import './css/Login.css';
 
 const Login = () => {
@@ -38,18 +39,17 @@ const Login = () => {
     }
 
     return (
-      <div className="LoginFormWrapper">
+      <div className="login_container">
         <form onSubmit={handleSubmit}>
-            <div className="LoginFormTitle">
-                <h2>로그인</h2>
-            </div>
-            <div className="LoginFormSection">
+          <div className="login_header">
+            <p id="login_text">Login</p>
+          </div>
+            <div className="login_body">
               <InputWithLabel label="아이디" onChange={handleIdChange} type='text' maxLength='20' name='signup_id' placeholder="아이디를 입력하세요." />
               <InputWithLabel label="비밀번호" onChange={handlePasswordChange} type='password' maxLength='15' name='signup_password' placeholder="비밀번호를 입력하세요."/>
-              
-              <button type='submit'>등록</button> 
+              <Link to="/Signup" className="signup_link">회원가입</Link>
+              <button type='submit' className="login_submit_btn">로그인</button> 
             </div>
-            
         </form>
       </div>
     )

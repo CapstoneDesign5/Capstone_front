@@ -82,38 +82,41 @@ const MedicineInfo = () => {
 
     return (
       <div className="MedicineInfoWrapper">
-      <h2>약 정보 수정 페이지입니다.</h2>
-      <div className="MedicineInfoSection">
-          <fieldset>
-              <legend>약품 정보 수정</legend>
-              <form onSubmit={handleSubmit}>
-              <table>
-                  <thead>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <th>1일 권장 용량</th>
-                          <td><input className="inputSizeSmall" label="1일 권장 용량" type="number" placeholder={recommendedDose} onChange={handleNewRecommendedDoseChange} /></td>
-                      </tr>
-                      <tr>
-                          <th>1일 투약 횟수</th>
-                          <td><input className="inputSizeSmall" label="1일 투약 횟수" type="number" placeholder={numberDoses} onChange={handleNewNumberDosesChange} /></td>
-                      </tr>
-                      <tr>
-                          <th>무게</th>
-                          <td><input className="inputSizeSmall" label="무게" type="text" placeholder={weight} onChange={handleNewWeightChange} /></td>
-                      </tr>
-                      <tr>
-                          <th>기타</th>
-                          <td><input className="inputSizeBig" label="메모" type="text" placeholder={memo} onChange={handleNewMemoChange} /></td>
-                      </tr>
-                  </tbody>
-                  <tfoot>
-                  </tfoot>
-              </table>
-              <button>변경</button>
-              </form>
-          </fieldset>
+        <h2>약 정보 수정</h2>
+      <div className="form_container">
+            <form onSubmit={handleSubmit}>
+                <table>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>약품명</th>
+                            <td><input className="inputSize" label="약품명" type="text" disabled placeholder={recommendedDose} /></td>
+                        </tr>
+                        <tr>
+                            <th>1일 권장 용량</th>
+                            <td><input className="inputSizeSmall" label="1일 권장 용량" type="number" placeholder={recommendedDose} onChange={handleNewRecommendedDoseChange} /></td>
+                        </tr>
+                        <tr>
+                            <th>1일 투약 횟수</th>
+                            <td><input className="inputSizeSmall" label="1일 투약 횟수" type="number" placeholder={numberDoses} onChange={handleNewNumberDosesChange} /></td>
+                        </tr>
+                        <tr>
+                            <th>무게</th>
+                            <td><input className="inputSizeSmall" label="무게" type="text" placeholder={weight} onChange={handleNewWeightChange} /></td>
+                        </tr>
+                        <tr>
+                            <th>기타</th>
+                            <td><input className="inputSizeBig" label="메모" type="text" placeholder={memo} onChange={handleNewMemoChange} /></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <div className="footer_reg_btn>">
+                            <button type="submit" className="submit_btn">변경</button>
+                        </div>
+                    </tfoot>
+                </table>
+            </form>     
       </div>
   </div>
     )
