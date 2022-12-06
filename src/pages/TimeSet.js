@@ -57,7 +57,8 @@ const TimeSet = () => {
             RRN:timeRRN,
             time:time,
             date:date,
-            medicine:timeMedicine
+            medicine:timeMedicine,
+            medicine_check:"미복용"
         }).then((res)=>{
           if(res.status===200){
             alert('약품 복용 시간이 등록되었습니다.');

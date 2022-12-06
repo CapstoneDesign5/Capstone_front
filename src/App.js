@@ -18,6 +18,7 @@ import {
   ProfileEdit,
   MedicineInfo,
   MemberInfo } from './pages';
+import MedicineTime from './pages/MedicineTime';
 
 class App extends Component {
     render() {
@@ -31,6 +32,7 @@ class App extends Component {
                 <Route exact path="/*" element={<Home/>}/>
                 <Route path="/Login" element={<Login/>} />
                 <Route path="/Signup" element={<Signup/>} />
+                <Route path="/MedicineTime" element={<MedicineTime/>} />
                 <Route path="/MemberEdit" element={<MemberEdit/>} />
                 <Route path="/MemberInfo/:RRN" element={<MemberInfo/>} />
                 <Route path="/MemberReg" element={<MemberReg/>} />

@@ -1,0 +1,12 @@
+.medicineTimeEditWrapper {
+    margin: 20px;
+}
+
+.medicineTimeEditSection {
+    padding: 10px;
+}
+
+.medicineTimeListDelete {
+    color: red;
+    cursor: pointer;
+}
