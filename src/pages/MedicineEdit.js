@@ -101,13 +101,15 @@ export default function MedicineEdit() {
     return (
     <div className="medicineEditWrapper">
         <div className="medicineEditTitle">
-            <h1>약품정보 조회</h1>
+            <h2>약품정보 조회</h2>
         </div>
-        <div className="medicineEditSection">
-            <div className="medicineSearch">
+        <div className="search_container">
+            <div className="medicine_search">
                 검색창
             </div>
-            <div className="medicineList">
+        </div>
+        <div className="medicine_container">
+            <div className="medicine_list">
                 <Box sx={{ height: 500, width: '100%' }}>
                     <DataGrid
                         rows={data}
@@ -122,6 +124,7 @@ export default function MedicineEdit() {
                 </Box>
             </div>
         </div>
+
     </div>
     )
 }

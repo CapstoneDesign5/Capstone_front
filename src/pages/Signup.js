@@ -54,10 +54,10 @@ const Signup = () => {
   return (
     <div className="SignupFormWrapper">
       <form onSubmit={handleSubmit}>
+        <div className="signup_container">
         <div className="SignupFormTitle">
             <h2>회원가입 (Signup)</h2>
         </div>
-        <div className="SignupFormSection">
           <InputWithLabel input label="아이디" onChange={handleIdChange} type='text' maxLength='20' name='signup_id' placeholder="아이디"/>
           <InputWithLabel input label="비밀번호" onChange={handlePasswordChange} type='password' maxLength='15' name='signup_password' placeholder="비밀번호"/>
           {/* <InputWithLabel label="비밀번호 확인" type='password' maxLength='15' name='signup_pswCheck'/> */}
@@ -65,7 +65,7 @@ const Signup = () => {
           <InputWithLabel input label="휴대전화" onChange={handlePhoneNumChange} type='text' maxLength='20' name='signup_phone_num' placeholder="010-xxxx-xxxx"/>
           <InputWithLabel input label="이메일" onChange={handleEmail} type='text' maxLength='30' name='signup_email' placeholder="xxx@gmail.com"/> 
               
-          <button type='submit'>가입하기</button>
+          <button className="signup_submit_btn" type='submit'>가입하기</button>
         </div>
       </form>
     </div>

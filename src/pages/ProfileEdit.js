@@ -94,17 +94,12 @@ const ProfileEdit = () => {
 
     return (
         <div className="ProfileEditFormWrapper">
-                <div className="ProfileEditFormTitle">
-                    <h1>개인정보 관리</h1>
-                </div>
-                <form onSubmit={handleSubmit}>
-                <div className="ProfileEditFormSection">
-                    <Box sx={{ height: 220, width: 900, marginBottom: 5,}} >
-                        <div className="ProfileBox">
-                            {/* 관리자 프로필 ( 이메일, 이름 ) 들어가는 부분 */}
-                            <label>관리자 프로필</label>
-                            <div>
-                                <Accordion sx={{marginTop:3}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            <h2>개인정보 관리</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="profile_info_container">
+                <h3 id="profile_edit_h3">Profile</h3>    
+                    <div>
+                        <Accordion sx={{marginTop:3}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                                     <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1bh-content"
@@ -124,8 +119,8 @@ const ProfileEdit = () => {
                                         * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
-                                </Accordion>
-                                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                        </Accordion>
+                        <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                                     <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel2bh-content"
@@ -143,8 +138,8 @@ const ProfileEdit = () => {
                                         * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
-                                </Accordion>
-                                <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                        </Accordion>
+                        <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                                     <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel3bh-content"
@@ -164,8 +159,8 @@ const ProfileEdit = () => {
                                         * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
-                                </Accordion>
-                                <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+                        </Accordion>
+                        <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                                     <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel4bh-content"
@@ -183,27 +178,39 @@ const ProfileEdit = () => {
                                         * 비밀번호 변경은 '메뉴 - 비밀번호 변경'에서 가능합니다.
                                     </Typography>
                                     </AccordionDetails>
-                                </Accordion>
-                            </div>
-                        </div>
-                    </Box>
-                    <Box sx={{ marginTop: 0, height: 50, width: 900, border: 1, textAlign: 'center', paddingTop: 4}} >
-                        <div className="MyInfoBox">
-                            <label htmlfor="managerName">이름</label>
-                            <input id="managerName" type="text" onChange={handleNameChange}/>
-
-                            <label htmlfor="phoneNumber">휴대전화번호</label>
-                            <input id="phoneNumber" type="text" onChange={handlePhoneNumChange}/>
-
-                            <label htmlfor="managerId" >아이디</label>
-                            <input id="managerId" type="text" onChange={handleNewIdChange}/>
-
-                            <label htmlfor="managerEmail">E-mail</label>
-                            <input id="managerEmail" type="text" onChange={handleEmailChange}/>
-
-                        </div>
-                    </Box>
-                    <button className="newPasswordbutton">변경</button>
+                        </Accordion>
+                    </div>
+                </div>
+                <div className="profile_edit_container">
+                <h3 id="profile_edit_h3">개인정보 변경</h3>
+                <h5 id="profile_edit_h6">*변경하실 정보를 입력하세요.</h5>
+                <table>
+                  <thead>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th className='profile_edit_th'>이름</th>
+                          <td><input className="inputSizeSmall" type="text" onChange={handleNameChange}/></td>
+                      </tr>
+                      <tr>
+                          <th className='profile_edit_th'>휴대전화번호</th>
+                          <td>
+                            <input className="inputSizeSmall" type="text" onChange={handlePhoneNumChange}/>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th className='profile_edit_th'>아이디</th>
+                          <td><input className="inputSizeSmall" type="text" onChange={handleNewIdChange}/></td>
+                      </tr>
+                      <tr>
+                          <th className='profile_edit_th'>E-mail</th>
+                          <td><input className="inputSizeSmall" type="text" onChange={handleEmailChange}/></td>
+                      </tr>
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+                    </table>
+                    <button className="submit_btn">변경</button>
                 </div>
             </form>
         </div>

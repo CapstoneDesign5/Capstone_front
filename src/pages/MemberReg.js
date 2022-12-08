@@ -1,8 +1,10 @@
 //고객 정보 등록 페이지
 
 
-import React, {useState ,useEffect} from 'react';
+import React, {useState ,useEffect, useRef} from 'react';
 import axios from 'axios';
+// import DaumPostCode from 'react-daum-postcode';
+// import Modal from '../components/Modal';
 import './css/MemberReg.css';
 
 const MemberReg = () => {
@@ -46,7 +48,6 @@ const MemberReg = () => {
     const handleRemakrChange = (event) => {
         setRemark(event.target.value);
     }
-
   
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -88,7 +89,9 @@ const MemberReg = () => {
                       </tr>
                       <tr>
                           <th>주소</th>
-                          <td><input className="inputSize" label="주소" type="text" onChange={handleAddressChange} placeholder="xx시 xx군" /></td>
+                          <td>
+                            <input className="inputSize" label="주소" type="text" onChange={handleAddressChange} placeholder="xx시 xx구" />
+                          </td>
                       </tr>
                       <tr>
                           <th>집 전화</th>

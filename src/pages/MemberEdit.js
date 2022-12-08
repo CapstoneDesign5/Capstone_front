@@ -68,9 +68,8 @@ export default function MemberEdit() {
         wedth: 150,
         renderCell: (params) => {
             return ( 
-                //Edit 버튼을 누르면 /member/id 링크로 이동 
+                //Edit 버튼을 누르면 /memberinfo/RRN 링크로 이동 
                 //Delete 아이콘을 누르면 handleDelete 함수가 호출됨. 
-                //Delete 버튼은 state에 있는 값을 삭제.(dummyData 내용은 그대로임)
                 <>
                 <Link to={'/MemberInfo/' + params.row.RRN}> 
                 <button className="memberListEdit">Edit</button>
@@ -106,15 +105,18 @@ export default function MemberEdit() {
         return retVal;
     }
 
+
     return (
     <div className="memberEditWrapper">
         <div className="memberEditTitle">
-            <h1>고객정보 조회</h1>
+            <h2>고객정보 조회</h2>
         </div>
-        <div className="memberEditSection">
-            <div className="memberSearch">
-                검색창
+        <div className="search_container">
+            <div className="member_search">
+                <search> 검색창</search>
             </div>
+        </div>
+        <div className="member_container">
             <div className="memberList">
                 <Box sx={{ height: 500, width: '100%' }}>
                     <DataGrid

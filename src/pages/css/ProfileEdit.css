@@ -1,3 +1,40 @@
 .ProfileEditFormWrapper {
     margin: 20px;
 }
+
+#profile_edit_h3 {
+    display: inline;
+    margin: 0px 0px 20px 0px;
+}
+
+#profile_edit_h6 {
+    display: inline;
+    margin: 0px 0px 20px 20px;
+    color: rgb(88, 88, 88);
+}
+
+
+.profile_info_container{
+    padding: 20px 20px 20px 20px;
+    margin: 20px;
+    width: auto;
+    background-color: white;
+    box-shadow: 5px 5px 5px 5px rgb(176, 176, 176);
+}
+
+.profile_edit_container{
+    padding: 20px 20px 100px 20px;
+    margin: 20px;
+    width: auto;
+    background-color: white;
+    box-shadow: 5px 5px 5px 5px rgb(176, 176, 176);
+}
+
+.profile_edit_th {
+    text-align: left;
+    width: 200px;
+    padding: 0px 10px 0px 15px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    background-color: #f0f0f0;
+    font-size: 14px;
+}

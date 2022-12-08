@@ -104,13 +104,15 @@ export default function MedicineTime() {
     return (
     <div className="medicineTimeEditWrapper">
         <div className="medicineTimeEditTitle">
-            <h1>약 복용 시간 조회</h1>
+            <h2>약 복용 시간 조회</h2>
         </div>
-        <div className="medicineTimeEditSection">
-            <div className="medicineTimeSearch">
+        <div className="search_container">
+            <div className="medicine_time_search">
                 검색창
             </div>
-            <div className="medicineTimeList">
+        </div>
+        <div className="medicine_time_container">
+            <div className="medicine_time_list">
                 <Box sx={{ height: 500, width: '100%' }}>
                     <DataGrid
                         rows={data}
@@ -125,6 +127,7 @@ export default function MedicineTime() {
                 </Box>
             </div>
         </div>
+
     </div>
     )
 }
