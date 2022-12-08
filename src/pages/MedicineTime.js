@@ -108,7 +108,8 @@ export default function MedicineTime() {
         </div>
         <div className="search_container">
             <div className="medicine_time_search">
-                검색창
+                <input className="input_search"></input>
+                <button className="input_search_btn">검색</button>
             </div>
         </div>
         <div className="medicine_time_container">

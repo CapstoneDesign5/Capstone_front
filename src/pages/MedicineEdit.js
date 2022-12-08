@@ -105,7 +105,8 @@ export default function MedicineEdit() {
         </div>
         <div className="search_container">
             <div className="medicine_search">
-                검색창
+                <input className="input_search"></input>
+                <button className="input_search_btn">검색</button>
             </div>
         </div>
         <div className="medicine_container">

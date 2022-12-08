@@ -9,6 +9,20 @@
     background-color: white;
     box-shadow: 5px 5px 5px 5px rgb(176, 176, 176);
 }
+.input_search {
+    width: 300px;
+}
+
+.input_search_btn {
+    margin-left: 20px;
+    width: 80px;
+    height: 25px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgb(108, 108, 108);
+    color: white;
+    cursor: pointer;
+}
 
 .member_container {
     padding: 20px 20px 100px 20px;

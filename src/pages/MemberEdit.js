@@ -113,7 +113,8 @@ export default function MemberEdit() {
         </div>
         <div className="search_container">
             <div className="member_search">
-                <search> 검색창</search>
+                <input className="input_search"></input>
+                <button className="input_search_btn">검색</button>
             </div>
         </div>
         <div className="member_container">
