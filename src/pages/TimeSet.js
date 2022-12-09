@@ -73,7 +73,7 @@ const TimeSet = () => {
     const lockHandler = (event) => {
         event.preventDefault();
         axios.post('http://localhost:5000/medicineTime/lockCheck', {
-            lock_check : true
+            lock_check : "true"
         }).then((res)=>{
           if(res.status===200){
             alert('약통 전체 잠금을 해제합니다.');
